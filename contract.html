@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrat de Développement - Librairie Breslev Online</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #6B46C1, #EC4899);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(107, 70, 193, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107, 70, 193, 0.4);
+        }
+        
+        .download-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #10B981, #34D399);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+        
+        .contract-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #6B46C1, #EC4899);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #6B46C1;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .parties {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .party-box {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #6B46C1;
+        }
+        
+        .party-box h3 {
+            color: #6B46C1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .party-box p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
+        .article {
+            margin-bottom: 25px;
+        }
+        
+        .article h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .article-content {
+            padding-left: 20px;
+            color: #555;
+        }
+        
+        ul {
+            list-style-position: inside;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+        
+        .deliverables-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .deliverables-table th {
+            background: #6B46C1;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .deliverables-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .deliverables-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .timeline-table {
+            width: 100%;
+            margin: 20px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .timeline-table th {
+            background: #f8f9fa;
+            padding: 12px;
+            font-weight: 600;
+            color: #6B46C1;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .timeline-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .price-box {
+            background: linear-gradient(135deg, #6B46C1, #EC4899);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .price-box h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .price-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        .signature-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .signature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 30px;
+        }
+        
+        .signature-box {
+            text-align: center;
+        }
+        
+        .signature-line {
+            border-bottom: 2px solid #333;
+            margin: 60px 0 10px 0;
+        }
+        
+        .signature-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .important-note {
+            background: #e8f4fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .contract-container {
+                box-shadow: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .back-button, .download-button {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .parties, .signature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .back-button, .download-button {
+                top: 10px;
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+            
+            .back-button {
+                left: 10px;
+            }
+            
+            .download-button {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Retour</a>
+    <a href="contract.pdf" download class="download-button">
+        📥 Télécharger PDF
+    </a>
+    
+    <div class="contract-container">
+        <div class="header">
+            <h1>CONTRAT DE DÉVELOPPEMENT WEB</h1>
+            <div class="subtitle">Site E-Commerce - Librairie Breslev Online</div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <div class="parties">
+                    <div class="party-box">
+                        <h3>LE PRESTATAIRE</h3>
+                        <p><strong>David Amor</strong></p>
+                        <p>Développeur Web Expert Shopify</p>
+                        <p>Tél: +972 58 492 1492</p>
+                        <p>Email: codenolimits@gmail.com</p>
+                        <p>Ci-après dénommé "le Prestataire"</p>
+                    </div>
+                    <div class="party-box">
+                        <h3>LE CLIENT</h3>
+                        <p><strong>Esther Ifrah</strong></p>
+                        <p>Librairie Breslev</p>
+                        <p>Tél: [À compléter]</p>
+                        <p>Email: [À compléter]</p>
+                        <p>Ci-après dénommé "le Client"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 1 - OBJET DU CONTRAT</h2>
+                <div class="article-content">
+                    <p>Le présent contrat a pour objet la conception, le développement et la mise en ligne d'un site e-commerce complet pour la vente de livres physiques et numériques de la collection Breslev, incluant un système de lecture protégée et d'abonnement mensuel.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 2 - DESCRIPTION DES PRESTATIONS</h2>
+                <div class="article-content">
+                    <h3>2.1 Fonctionnalités principales à développer :</h3>
+                    <ul>
+                        <li>Catalogue en ligne de 30 titres (20 livres + 10 brochures) avec descriptions détaillées</li>
+                        <li>Système de vente triple : physique, numérique, et bundles avec réduction automatique</li>
+                        <li>Calcul automatique des frais de port pour 3 zones (Israël, France, Canada)</li>
+                        <li>Système de lecture numérique protégée type "flipbook" (technologie FlipHTML5)</li>
+                        <li>Protection DRM sociale avec watermarking invisible (LemonInk)</li>
+                        <li>Système d'abonnement mensuel/annuel donnant accès à tous les livres numériques</li>
+                        <li>Multi-devises en temps réel (EUR, ILS, CAD, USD)</li>
+                        <li>Site trilingue (Français, Hébreu, Anglais) avec traduction automatique</li>
+                        <li>Paiement sécurisé par carte bancaire et PayPal</li>
+                        <li>Tableau de bord administrateur avec statistiques de vente</li>
+                    </ul>
+                    
+                    <h3>2.2 Technologies utilisées :</h3>
+                    <ul>
+                        <li><strong>Plateforme:</strong> Shopify Plus</li>
+                        <li><strong>Thème:</strong> Bookly ou Susan (thème premium spécialisé librairies)</li>
+                        <li><strong>Protection lecture:</strong> FlipHTML5 Business</li>
+                        <li><strong>DRM:</strong> LemonInk</li>
+                        <li><strong>Abonnements:</strong> Sky Pilot</li>
+                        <li><strong>Traduction:</strong> Weglot</li>
+                        <li><strong>CDN:</strong> CloudFlare</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 3 - LIVRABLES</h2>
+                <div class="article-content">
+                    <table class="deliverables-table">
+                        <thead>
+                            <tr>
+                                <th>Livrable</th>
+                                <th>Description</th>
+                                <th>Délai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Site e-commerce complet</strong></td>
+                                <td>Site Shopify fonctionnel avec toutes les fonctionnalités listées</td>
+                                <td>4 semaines</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Import catalogue</strong></td>
+                                <td>Import et configuration des 30 titres avec descriptions et images</td>
+                                <td>Semaine 1</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Système de protection</strong></td>
+                                <td>Configuration FlipHTML5 + LemonInk pour lecture protégée</td>
+                                <td>Semaine 3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Formation</strong></td>
+                                <td>Formation 2h en visioconférence sur l'utilisation du site</td>
+                                <td>Semaine 4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Documentation</strong></td>
+                                <td>Guide d'utilisation complet en français (PDF)</td>
+                                <td>Semaine 4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Support technique</strong></td>
+                                <td>Assistance technique post-lancement</td>
+                                <td>30 jours</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 4 - CALENDRIER DE RÉALISATION</h2>
+                <div class="article-content">
+                    <table class="timeline-table">
+                        <thead>
+                            <tr>
+                                <th>Semaine</th>
+                                <th>Tâches</th>
+                                <th>Validation requise</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Semaine 1</strong></td>
+                                <td>• Design et identité visuelle<br>• Import du catalogue existant<br>• Configuration zones de livraison</td>
+                                <td>Validation design</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Semaine 2</strong></td>
+                                <td>• Développement plateforme Shopify<br>• Intégration système de paiement<br>• Configuration multi-devises</td>
+                                <td>Validation structure</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Semaine 3</strong></td>
+                                <td>• Intégration système de protection<br>• Configuration abonnements<br>• Tests de sécurité</td>
+                                <td>Validation fonctionnalités</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Semaine 4</strong></td>
+                                <td>• Tests finaux et optimisations<br>• Formation client<br>• Mise en ligne</td>
+                                <td>Validation finale</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 5 - CONDITIONS FINANCIÈRES</h2>
+                <div class="article-content">
+                    <div class="price-box">
+                        <h4>Détail des coûts</h4>
+                        <div class="price-row">
+                            <span>Développement site e-commerce</span>
+                            <span>3,500 ₪</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Maintenance 1 an INCLUSE</span>
+                            <span>500 ₪</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Formation 2h</span>
+                            <span>INCLUS</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Support 30 jours</span>
+                            <span>INCLUS</span>
+                        </div>
+                        <div class="price-row">
+                            <strong>TOTAL TTC</strong>
+                            <strong>4,000 ₪ (1,000 €)</strong>
+                        </div>
+                    </div>
+                    
+                    <h3>5.1 Modalités de paiement :</h3>
+                    <ul>
+                        <li><strong>Acompte à la signature :</strong> 50% soit <span class="highlight">2,000 ₪</span> (500 €)</li>
+                        <li><strong>Solde à la livraison :</strong> 50% soit <span class="highlight">2,000 ₪</span> (500 €)</li>
+                    </ul>
+                    
+                    <h3>5.2 Moyens de paiement acceptés :</h3>
+                    <ul>
+                        <li>Virement bancaire</li>
+                        <li>PayPal</li>
+                        <li>Espèces</li>
+                    </ul>
+                    
+                    <div class="important-note">
+                        <strong>Note importante :</strong> Les coûts mensuels de la plateforme (Shopify ~160₪/mois + plugins ~160₪/mois) seront à la charge du Client après la livraison du projet.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 6 - GARANTIES</h2>
+                <div class="article-content">
+                    <h3>Le Prestataire garantit :</h3>
+                    <ul>
+                        <li>Un site 100% responsive (mobile, tablette, desktop)</li>
+                        <li>La conformité RGPD pour l'Europe et Israël</li>
+                        <li>Une optimisation SEO de base pour Google</li>
+                        <li>Une vitesse de chargement < 2 secondes</li>
+                        <li>La correction des bugs pendant 30 jours après livraison</li>
+                        <li>La maintenance technique pendant 1 an (valeur 500₪)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 7 - PROPRIÉTÉ INTELLECTUELLE</h2>
+                <div class="article-content">
+                    <ul>
+                        <li>Le Client devient propriétaire du site et de son contenu après paiement intégral</li>
+                        <li>Le Prestataire conserve le droit d'utiliser le projet dans son portfolio</li>
+                        <li>Les licences des plugins tiers restent soumises à leurs conditions respectives</li>
+                        <li>Le contenu (textes, images des livres) reste la propriété exclusive du Client</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 8 - OBLIGATIONS DU CLIENT</h2>
+                <div class="article-content">
+                    <p>Le Client s'engage à :</p>
+                    <ul>
+                        <li>Fournir tous les contenus nécessaires (descriptions, images, prix) dans les délais</li>
+                        <li>Valider les étapes du projet selon le calendrier établi</li>
+                        <li>Effectuer les paiements selon les échéances prévues</li>
+                        <li>Fournir les accès nécessaires aux plateformes existantes</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 9 - RÉSILIATION</h2>
+                <div class="article-content">
+                    <ul>
+                        <li>En cas d'annulation par le Client après signature, l'acompte reste acquis au Prestataire</li>
+                        <li>En cas de retard de paiement > 30 jours, le Prestataire peut suspendre l'accès au site</li>
+                        <li>Tout retard du Client dans la fourniture des éléments repousse d'autant la date de livraison</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 10 - MAINTENANCE POST-LIVRAISON</h2>
+                <div class="article-content">
+                    <h3>10.1 Maintenance incluse (1 an) :</h3>
+                    <ul>
+                        <li>Mises à jour de sécurité Shopify</li>
+                        <li>Corrections de bugs mineurs</li>
+                        <li>Support email (réponse sous 48h)</li>
+                        <li>1 modification mineure par mois (< 30 min de travail)</li>
+                    </ul>
+                    
+                    <h3>10.2 Non inclus dans la maintenance :</h3>
+                    <ul>
+                        <li>Ajout de nouvelles fonctionnalités</li>
+                        <li>Refonte graphique</li>
+                        <li>Modifications majeures (facturées 500₪/modification)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 11 - CONFIDENTIALITÉ</h2>
+                <div class="article-content">
+                    <p>Les parties s'engagent à garder confidentielles toutes les informations échangées dans le cadre de ce projet, notamment les données commerciales, techniques et financières.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ARTICLE 12 - LOI APPLICABLE</h2>
+                <div class="article-content">
+                    <p>Le présent contrat est soumis au droit israélien. En cas de litige, les parties s'engagent à chercher une solution amiable avant toute procédure judiciaire.</p>
+                </div>
+            </div>
+            
+            <div class="signature-section">
+                <p><strong>Fait en deux exemplaires originaux,</strong></p>
+                <p>À _________________, le _____/_____/2025</p>
+                
+                <div class="signature-grid">
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <p class="signature-label">Le Prestataire<br>David Amor<br>Lu et approuvé</p>
+                    </div>
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <p class="signature-label">Le Client<br>Esther Ifrah<br>Lu et approuvé</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Contrat de développement web - Librairie Breslev Online - Page 1/1</p>
+            <p>© 2025 - Document confidentiel</p>
+        </div>
+    </div>
+</body>
+</html>
+
