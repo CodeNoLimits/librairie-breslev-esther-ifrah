@@ -1,0 +1,97 @@
+<div class="collection-page container py-5">
+  <div class="collection-header text-center mb-4">
+    <h1>{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div class="collection-description">{{ collection.description }}</div>
+    {% endif %}
+  </div>
+
+  <div class="collection-layout">
+    <aside class="collection-sidebar">
+      <h3>Filtres</h3>
+      <div class="filter-group">
+        <h4>Auteur</h4>
+        <ul>
+          <li><a href="#">Rabbi Nachman</a></li>
+          <li><a href="#">Rabbi Nathan</a></li>
+        </ul>
+      </div>
+      <div class="filter-group">
+        <h4>Thème</h4>
+        <ul>
+          <li><a href="#">Foi</a></li>
+          <li><a href="#">Prière</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="collection-content">
+      <div class="collection-grid">
+        {% for product in collection.products %}
+          <a href="{{ product.url }}" class="book-card">
+            <div class="book-cover-wrapper">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}" loading="lazy">
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag }}
+              {% endif %}
+            </div>
+            <h3 class="book-title">{{ product.title }}</h3>
+            <div class="book-author">
+              {% if product.metafields.custom.author %}
+                {{ product.metafields.custom.author }}
+              {% else %}
+                {{ product.vendor }}
+              {% endif %}
+            </div>
+            <div class="book-price">{{ product.price | money }}</div>
+          </a>
+        {% else %}
+          <p>Aucun livre dans cette collection.</p>
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <div class="pagination text-center mt-4">
+          {{ paginate | default_pagination }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .collection-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: var(--spacing-lg);
+  }
+  @media (max-width: 768px) {
+    .collection-layout {
+      grid-template-columns: 1fr;
+    }
+    .collection-sidebar {
+      display: none; /* Simplification pour mobile */
+    }
+  }
+  .collection-sidebar {
+    background: var(--color-paper-dark);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    height: fit-content;
+  }
+  .filter-group ul {
+    list-style: none;
+    padding: 0;
+  }
+  .filter-group li {
+    margin-bottom: var(--spacing-xs);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Main Collection",
+  "settings": []
+}
+{% endschema %}

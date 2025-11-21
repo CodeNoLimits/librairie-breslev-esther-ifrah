@@ -1,0 +1,4 @@
+Handle,Title,Body (HTML),Vendor,Type,Tags,Published,Option1 Name,Option1 Value,Variant SKU,Variant Grams,Variant Inventory Qty,Variant Price,Image Src,Metafield: custom.author [single_line_text_field],Metafield: custom.pages_count [number_integer],Metafield: custom.original_language [single_line_text_field]
+likutey-moharan,Likutey Moharan,"<p>Le livre fondamental de la Breslev.</p>",Esther Ifra,Livre Relié,"Rabbi Nachman, Fondamental",TRUE,Format,Standard,LM-STD,800,50,25.00,https://example.com/lm.jpg,Rabbi Nachman,400,Hébreu
+sipoure-maassiot,Sipoure Maassiot,"<p>Les contes fantastiques.</p>",Esther Ifra,Livre Relié,"Rabbi Nachman, Contes",TRUE,Format,Standard,SM-STD,600,100,20.00,https://example.com/sm.jpg,Rabbi Nachman,350,Yiddish/Hébreu
+conseils,Conseils (Likutey Etsot),"<p>Conseils pratiques pour la vie.</p>",Esther Ifra,Livre Broché,"Rabbi Nathan, Conseils",TRUE,Format,Poche,LE-POCHE,300,200,15.00,https://example.com/le.jpg,Rabbi Nathan,200,Hébreu

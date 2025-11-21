@@ -1,0 +1,68 @@
+<div class="featured-collection py-5">
+  <div class="container">
+    <h2 class="text-center">{{ section.settings.title }}</h2>
+    <div class="collection-grid">
+      {% assign collection = collections[section.settings.collection] %}
+      {% for product in collection.products limit: section.settings.limit %}
+        <a href="{{ product.url }}" class="book-card">
+          <div class="book-cover-wrapper">
+            <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}" loading="lazy">
+          </div>
+          <h3 class="book-title">{{ product.title }}</h3>
+          <div class="book-author">
+             {% if product.metafields.custom.author %}
+               {{ product.metafields.custom.author }}
+             {% else %}
+               {{ product.vendor }}
+             {% endif %}
+          </div>
+          <div class="book-price">{{ product.price | money }}</div>
+        </a>
+      {% else %}
+        <p class="text-center">Aucun livre trouvé.</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Les Incontournables"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "label": "Number of products",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

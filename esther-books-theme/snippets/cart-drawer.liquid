@@ -1,0 +1,45 @@
+<div id="cart-drawer" class="cart-drawer" aria-hidden="true">
+  <div class="drawer-overlay" tabindex="-1"></div>
+  <div class="drawer-content">
+    <div class="drawer-header">
+      <h2>Panier</h2>
+      <button class="drawer-close">×</button>
+    </div>
+    <div class="drawer-body">
+       <!-- Items will be injected here via JS -->
+       <p>Votre panier est actuellement vide.</p>
+    </div>
+    <div class="drawer-footer">
+      <a href="{{ routes.cart_url }}" class="btn btn-full">Voir le panier</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cart-drawer {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 1000;
+    visibility: hidden;
+  }
+  .cart-drawer.active {
+    visibility: visible;
+  }
+  .drawer-overlay {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.5);
+  }
+  .drawer-content {
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 300px;
+    background: white;
+    padding: var(--spacing-md);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  .cart-drawer.active .drawer-content {
+    transform: translateX(0);
+  }
+</style>

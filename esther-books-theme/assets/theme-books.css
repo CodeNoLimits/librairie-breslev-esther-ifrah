@@ -1,0 +1,142 @@
+:root {
+  /* Palette de couleurs - Ambiance Bibliothèque & Spiritualité */
+  --color-paper: #fdfbf7; /* Fond page - Papier ancien */
+  --color-paper-dark: #f4f1ea; /* Fond secondaire */
+  --color-ink: #2c2c2c; /* Texte principal - Encre */
+  --color-ink-light: #5a5a5a; /* Texte secondaire */
+
+  --color-primary: #1a237e; /* Bleu profond - Breslev */
+  --color-primary-light: #534bae;
+  --color-primary-dark: #000051;
+
+  --color-gold: #c5a059; /* Or subtil - Royauté */
+  --color-gold-light: #f8d188;
+
+  --color-border: #e0e0e0;
+
+  /* Typographie */
+  --font-heading: 'Merriweather', serif; /* Titres - Classique */
+  --font-body: 'Inter', sans-serif; /* Corps - Lisible */
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: local('Merriweather'), url('https://fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-fCZM.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter'), url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2') format('woff2');
+  font-display: swap;
+
+  /* Espacement */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
+
+  /* Rayons */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-gold);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Utilitaires */
+.text-center { text-align: center; }
+.mt-4 { margin-top: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-md); }
+.py-5 { padding-top: var(--spacing-xl); padding-bottom: var(--spacing-xl); }
+
+/* Carte Livre */
+.book-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.book-cover-wrapper {
+  background-color: var(--color-paper-dark);
+  padding: var(--spacing-md);
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-sm);
+}
+
+.book-title {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-ink);
+}
+
+.book-author {
+  font-size: 0.9rem;
+  color: var(--color-ink-light);
+  font-style: italic;
+}

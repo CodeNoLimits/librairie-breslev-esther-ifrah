@@ -1,0 +1,104 @@
+<header class="site-header">
+  <div class="container header-wrapper">
+    <div class="header-logo">
+      <a href="{{ routes.root_url }}" class="header-logo-link">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+        {% else %}
+          <span class="h2">{{ shop.name }}</span>
+        {% endif %}
+      </a>
+    </div>
+
+    <nav class="header-nav">
+      <ul class="nav-list">
+        {% for link in section.settings.menu.links %}
+          <li class="nav-item">
+            <a href="{{ link.url }}" class="nav-link">{{ link.title }}</a>
+            {% if link.links.size > 0 %}
+              <ul class="dropdown-menu">
+                {% for childlink in link.links %}
+                  <li><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-bar">
+        <form action="{{ routes.search_url }}" method="get" role="search">
+          <input type="text" name="q" placeholder="Rechercher un livre..." class="search-input">
+          <button type="submit" class="search-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </form>
+      </div>
+      <a href="{{ routes.cart_url }}" class="cart-link">
+        Panier
+        {% if cart.item_count > 0 %}
+          <span class="cart-count">({{ cart.item_count }})</span>
+        {% endif %}
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background-color: var(--color-paper);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: var(--spacing-lg);
+  }
+  .nav-link {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+  .search-input {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,56 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Esther Ifra Breslev Books",
+    "theme_author": "Jules",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https://github.com/example/esther-books",
+    "theme_support_url": "https://github.com/example/esther-books/issues"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#fdfbf7"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#2c2c2c"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Accent",
+        "default": "#1a237e"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Accent",
+        "default": "#c5a059"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": "Heading Font",
+        "default": "serif"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body Font",
+        "default": "sans-serif"
+      }
+    ]
+  }
+]

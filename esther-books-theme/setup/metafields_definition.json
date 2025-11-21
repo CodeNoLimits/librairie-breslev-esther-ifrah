@@ -1,0 +1,60 @@
+{
+  "metafields": [
+    {
+      "namespace": "custom",
+      "key": "author",
+      "type": "single_line_text_field",
+      "name": "Auteur",
+      "description": "L'auteur du livre (ex: Rabbi Nachman)"
+    },
+    {
+      "namespace": "custom",
+      "key": "translator",
+      "type": "single_line_text_field",
+      "name": "Traducteur",
+      "description": "Le traducteur du livre"
+    },
+    {
+      "namespace": "custom",
+      "key": "pages_count",
+      "type": "number_integer",
+      "name": "Nombre de pages",
+      "description": "Le nombre total de pages"
+    },
+    {
+      "namespace": "custom",
+      "key": "publication_year",
+      "type": "number_integer",
+      "name": "Année de publication",
+      "description": "Année de sortie de cette édition"
+    },
+    {
+      "namespace": "custom",
+      "key": "original_language",
+      "type": "single_line_text_field",
+      "name": "Langue originale",
+      "description": "La langue d'origine du texte"
+    },
+    {
+      "namespace": "custom",
+      "key": "extract_pdf",
+      "type": "file_reference",
+      "name": "Extrait PDF",
+      "description": "Fichier PDF d'un extrait du livre"
+    },
+    {
+      "namespace": "custom",
+      "key": "summary",
+      "type": "multi_line_text_field",
+      "name": "Sommaire détaillé",
+      "description": "Sommaire ou table des matières"
+    },
+    {
+      "namespace": "custom",
+      "key": "approvals",
+      "type": "list.file_reference",
+      "name": "Approbations",
+      "description": "Images des approbations rabbiniques"
+    }
+  ]
+}

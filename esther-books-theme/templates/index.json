@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Esther Ifra Breslev Books",
+        "text": "<p>La librairie de référence pour les écrits de Rabbi Nachman.</p>"
+      }
+    },
+    "quote": {
+      "type": "daily-quote",
+      "settings": {
+        "quote": "Sache que l'homme doit traverser un pont très étroit, et l'essentiel est de ne pas avoir peur du tout.",
+        "author": "Rabbi Nachman"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Nos Meilleures Ventes"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "quote",
+    "featured"
+  ]
+}

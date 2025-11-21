@@ -1,0 +1,36 @@
+{% if template.name == 'product' %}
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "Book",
+    "name": {{ product.title | json }},
+    "image": "https:{{ product.featured_image | image_url: width: 1024 }}",
+    "description": {{ product.description | strip_html | json }},
+    "brand": {
+      "@type": "Thing",
+      "name": {{ product.vendor | json }}
+    },
+    {% if product.metafields.custom.author %}
+    "author": {
+        "@type": "Person",
+        "name": {{ product.metafields.custom.author | json }}
+    },
+    {% endif %}
+    {% if product.metafields.custom.pages_count %}
+    "numberOfPages": {{ product.metafields.custom.pages_count }},
+    {% endif %}
+    {% if product.metafields.custom.publication_year %}
+    "datePublished": "{{ product.metafields.custom.publication_year }}",
+    {% endif %}
+    {% if product.metafields.custom.original_language %}
+    "inLanguage": {{ product.metafields.custom.original_language | json }},
+    {% endif %}
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "price": {{ product.price | divided_by: 100.00 | json }},
+      "availability": "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}"
+    }
+  }
+  </script>
+{% endif %}

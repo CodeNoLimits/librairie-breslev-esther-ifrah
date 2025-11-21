@@ -1,0 +1,31 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content"
+    },
+    "meta": {
+      "tags": "Tags",
+      "page": "Page"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "read_extract": "Read an excerpt"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty.",
+      "continue_shopping": "Continue Shopping",
+      "remove": "Remove",
+      "subtotal": "Subtotal",
+      "gift_wrap": "Gift Wrap (Free)",
+      "update": "Update",
+      "checkout": "Checkout"
+    }
+  }
+}
