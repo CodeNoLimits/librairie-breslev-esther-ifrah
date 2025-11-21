@@ -1,2 +1,6 @@
 # Local Netlify folder
 .netlify
+
+# ISOLATION PROTECTION
+# Ignore the Shopify Theme folder to prevent it from being mixed with the main website repo
+esther-books-theme/
